@@ -34,7 +34,7 @@ module CarrierWave
         def #{column}=(new_file)
           column = _mounter(:#{column}).serialization_column
           send(:"\#{column}_will_change!")
-          super
+          _mounter(:#{column}).cache(new_file)
         end
       RUBY
 
